@@ -26,10 +26,10 @@
         dest: /etc/jmeter
         remote_src: yes
 
-#     - name: ensure jmeter service is started   # to start the jmeter service
-#       service:
-#         name: jmeter
-#         state: started
-#       register: service_output
+    - name: ensure jmeter service is started   # to start the jmeter service
+      service:
+        name: jmeter
+        state: started
+      register: service_output
 
-#    - debug: var=service_output # to check if service is started
+   - debug: var=service_output # to check if service is started
