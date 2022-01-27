@@ -1,8 +1,8 @@
 ---
 - hosts: demo
-#   user: ansible
+  user: ansible
   become: yes
-#   connection: ssh
+  connection: ssh
 #   gather_facts: yes
   tasks:
     - name: to install java
