@@ -1,0 +1,35 @@
+---
+- hosts: demo
+#   user: ansible
+  become: yes
+#   connection: ssh
+#   gather_facts: yes
+  tasks:
+    - name: to install java
+      action: yum name=java-1.8.0-openjdk state=present
+
+    - name: to create a directory
+      file:
+        path: /etc/jmeter
+        state: directory
+        mode: 0777
+
+    - name: download jmeter using url
+      get_url:
+        url: https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip
+        dest: /etc/jmeter
+        mode: 0777
+
+    - name: to unzip jmeter file
+      unarchive:
+        src: /etc/jmeter/apache-jmeter-5.4.1.zip
+        dest: /etc/jmeter
+        remote_src: yes
+
+#     - name: ensure jmeter service is started   # to start the jmeter service
+#       service:
+#         name: jmeter
+#         state: started
+#       register: service_output
+
+#    - debug: var=service_output # to check if service is started
